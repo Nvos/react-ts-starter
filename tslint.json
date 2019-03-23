@@ -5,7 +5,7 @@
   "rules": {
     "no-submodule-imports": false,
     "no-object-literal-type-assertion": false,
-    "quotemark": [true, "single"],
+    "quotemark": [true, "single", "jsx-double"],
     "trailing-comma": false,
     "no-console": {
       "severity": "warning",
@@ -22,7 +22,7 @@
     "forin": false,
     "interface-name": [false],
     "interface-over-type-literal": false,
-    "jsx-boolean-value": ["never"],
+    "jsx-boolean-value": ["always"],
     "jsx-no-lambda": [false],
     "jsx-no-multiline-js": [false],
     "jsx-no-string-ref": [false],
@@ -54,7 +54,6 @@
     "typedef": [true],
     "unified-signatures": [false],
     "variable-name": false,
-    "no-only-tests": true,
     "no-implicit-dependencies": false
   },
   "rulesDirectory": []

@@ -10,7 +10,7 @@ dependencies:
   react: 16.8.5
   react-dom: 16.8.5
   react-redux: 6.0.1
-  react-router-dom: 5.0.0
+  react-router-dom: 4.3.1
   react-scripts: 2.1.8
   redux: 4.0.1
   redux-observable: 1.0.0
@@ -24,7 +24,9 @@ devDependencies:
   '@commitlint/cli': 7.5.2
   '@commitlint/config-conventional': 7.5.0
   '@types/history': 4.7.2
+  '@types/loadable__component': 5.6.0
   '@types/react-redux': 7.0.5
+  '@types/react-router-dom': 4.3.1
   customize-cra: 0.2.12
   husky: 1.3.1
   jest-styled-components: 6.3.1
@@ -1807,6 +1809,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-2kLuPC5FDnWIDvaJBzsGTBQaBbnDweznicvK7UGYzlIJP4RJR2a4A/ByLUXEyEgag6jz8eHdlWExGDtH3EYUXQ==
+  /@types/loadable__component/5.6.0:
+    dependencies:
+      '@types/react': 16.8.8
+    dev: true
+    resolution:
+      integrity: sha512-Jq6jf8l4O0iVIELUizjm4YbUSN+LekhF0ZDaZ781OGygczE72dCYQ+CEaSMKKwMrDTzMY+c9xJIZ3vgyhMbNSA==
   /@types/node/11.11.6:
     dev: false
     resolution:
@@ -1832,6 +1840,21 @@ packages:
     dev: true
     resolution:
       integrity: sha512-O0WyoSbrMofJRxtSDe8qYhnmr2SSlTnshlQdnpgpD763L8BzlhXuEseksV7LSoCUwZ7vN4YqpQThl3jp02sceQ==
+  /@types/react-router-dom/4.3.1:
+    dependencies:
+      '@types/history': 4.7.2
+      '@types/react': 16.8.8
+      '@types/react-router': 4.4.5
+    dev: true
+    resolution:
+      integrity: sha512-GbztJAScOmQ/7RsQfO4cd55RuH1W4g6V1gDW3j4riLlt+8yxYLqqsiMzmyuXBLzdFmDtX/uU2Bpcm0cmudv44A==
+  /@types/react-router/4.4.5:
+    dependencies:
+      '@types/history': 4.7.2
+      '@types/react': 16.8.8
+    dev: true
+    resolution:
+      integrity: sha512-12+VOu1+xiC8RPc9yrgHCyLI79VswjtuqeS2gPrMcywH6tkc8rGIUhs4LaL3AJPqo5d+RPnfRpNKiJ7MK2Qhcg==
   /@types/react/16.8.8:
     dependencies:
       '@types/prop-types': 15.7.0
@@ -3429,10 +3452,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-yPiS3fQd842RZDgo/TAKGgS0f3p2nxssF1H65DIZvZv0Od5CygP8puHXn3IQiM/39VAvgCbdaMQpresrbGgt9g==
-  /core-js/1.2.7:
-    dev: false
-    resolution:
-      integrity: sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
   /core-js/2.6.4:
     dev: false
     resolution:
@@ -3496,17 +3515,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-MJG9liiZ+ogc4TzUwuvbER1JRdgvUFSB5+VR/g5h82fGaIRWMWddtKBHi7/sVhfjQZ6SehlyhvQYrcYkaUIpLg==
-  /create-react-context/0.2.3_prop-types@15.7.2:
-    dependencies:
-      fbjs: 0.8.17
-      gud: 1.0.0
-      prop-types: 15.7.2
-    dev: false
-    peerDependencies:
-      prop-types: ^15.0.0
-      react: ^0.14.0 || ^15.0.0 || ^16.0.0
-    resolution:
-      integrity: sha512-CQBmD0+QGgTaxDL3OX1IDXYqjkp2It4RIbcb99jS6AEg27Ga+a9G3JtK6SIu0HBwPLZlmwt9F7UwWA4Bn92Rag==
   /cross-spawn/5.1.0:
     dependencies:
       lru-cache: 4.1.5
@@ -4233,12 +4241,6 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
-  /encoding/0.1.12:
-    dependencies:
-      iconv-lite: 0.4.24
-    dev: false
-    resolution:
-      integrity: sha1-U4tm8+5izRq1HsMjgp0flIDHS+s=
   /end-of-stream/1.4.1:
     dependencies:
       once: 1.4.0
@@ -4829,18 +4831,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-VOmr99+i8mzZsWNsWIwa/AXeXVg=
-  /fbjs/0.8.17:
-    dependencies:
-      core-js: 1.2.7
-      isomorphic-fetch: 2.2.1
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-      promise: 7.3.1
-      setimmediate: 1.0.5
-      ua-parser-js: 0.7.19
-    dev: false
-    resolution:
-      integrity: sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
   /figgy-pudding/3.5.1:
     dev: false
     resolution:
@@ -5329,10 +5319,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
-  /gud/1.0.0:
-    dev: false
-    resolution:
-      integrity: sha512-zGEOVKFM5sVPPrYs7J5/hYEw2Pof8KCyOwyhG8sAF26mCAeUFAcYPu1mwB7hhpIP29zOIBaDqwuHdLp0jvZXjw==
   /gzip-size/5.0.0:
     dependencies:
       duplexer: 0.1.1
@@ -5513,6 +5499,10 @@ packages:
       node: '>=4.0.0'
     resolution:
       integrity: sha512-QLg82fGkfnJ/4iy1xZ81/9SIJiq1NGFUMGs6ParyjBZr6jW2Ufj/snDqTHixNlHdPNwN2RLVD0Pi3igeK9+JfA==
+  /hoist-non-react-statics/2.5.5:
+    dev: false
+    resolution:
+      integrity: sha512-rqcy4pJo55FTTLWt+bU8ukscqHeE/e9KWvsOW2b/a3afxQZhwkQdT1rPPCJ0rYXdj4vNcasY8zHTH+jF/qStxw==
   /hoist-non-react-statics/3.3.0:
     dependencies:
       react-is: 16.8.5
@@ -6311,13 +6301,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
-  /isomorphic-fetch/2.2.1:
-    dependencies:
-      node-fetch: 1.7.3
-      whatwg-fetch: 3.0.0
-    dev: false
-    resolution:
-      integrity: sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=
   /isstream/0.1.2:
     dev: false
     resolution:
@@ -7653,13 +7636,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-rmTZ9kz+f3rCvK2TD1Ue/oZlns7OGoIWP4fc3llxxRXlOkHKoWPPWJOfFYpITabSow43QJbRIoHQXtt10VldyQ==
-  /node-fetch/1.7.3:
-    dependencies:
-      encoding: 0.1.12
-      is-stream: 1.1.0
-    dev: false
-    resolution:
-      integrity: sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==
   /node-forge/0.7.5:
     dev: false
     resolution:
@@ -9087,12 +9063,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-mEcocL8igTL8vdhoEputEsPAKeM=
-  /promise/7.3.1:
-    dependencies:
-      asap: 2.0.6
-    dev: false
-    resolution:
-      integrity: sha512-nolQXZ/4L+bP/UGlkfaIujX9BKxGwmQ9OT4mOt5yvy8iK1h3wqTEJCijzGANTCCl9nWjY41juyAn2K3Q1hLLTg==
   /promise/8.0.2:
     dependencies:
       asap: 2.0.6
@@ -9356,37 +9326,33 @@ packages:
       redux: ^2.0.0 || ^3.0.0 || ^4.0.0-0
     resolution:
       integrity: sha512-T52I52Kxhbqy/6TEfBv85rQSDz6+Y28V/pf52vDWs1YRXG19mcFOGfHnY2HsNFHyhP+ST34Aih98fvt6tqwVcQ==
-  /react-router-dom/5.0.0:
+  /react-router-dom/4.3.1:
     dependencies:
-      '@babel/runtime': 7.4.2
       history: 4.9.0
+      invariant: 2.2.4
       loose-envify: 1.4.0
       prop-types: 15.7.2
-      react-router: 5.0.0
-      tiny-invariant: 1.0.3
-      tiny-warning: 1.0.2
+      react-router: 4.3.1
+      warning: 4.0.3
     dev: false
     peerDependencies:
       react: '>=15'
     resolution:
-      integrity: sha512-wSpja5g9kh5dIteZT3tUoggjnsa+TPFHSMrpHXMpFsaHhQkm/JNVGh2jiF9Dkh4+duj4MKCkwO6H08u6inZYgQ==
-  /react-router/5.0.0:
+      integrity: sha512-c/MlywfxDdCp7EnB7YfPMOfMD3tOtIjrQlj/CKfNMBxdmpJP8xcz5P/UAFn3JbnQCNUxsHyVVqllF9LhgVyFCA==
+  /react-router/4.3.1:
     dependencies:
-      '@babel/runtime': 7.4.2
-      create-react-context: 0.2.3_prop-types@15.7.2
       history: 4.9.0
-      hoist-non-react-statics: 3.3.0
+      hoist-non-react-statics: 2.5.5
+      invariant: 2.2.4
       loose-envify: 1.4.0
       path-to-regexp: 1.7.0
       prop-types: 15.7.2
-      react-is: 16.8.5
-      tiny-invariant: 1.0.3
-      tiny-warning: 1.0.2
+      warning: 4.0.3
     dev: false
     peerDependencies:
       react: '>=15'
     resolution:
-      integrity: sha512-6EQDakGdLG/it2x9EaCt9ZpEEPxnd0OCLBHQ1AcITAAx7nCnyvnzf76jKWG1s2/oJ7SSviUgfWHofdYljFexsA==
+      integrity: sha512-yrvL8AogDh2X42Dt9iknk4wF4V8bWREPirFfS9gLU1huk6qK41sg7Z/1S81jjTrGHxa3B8R3J6xIkDAA6CVarg==
   /react-scripts/2.1.8:
     dependencies:
       '@babel/core': 7.2.2
@@ -11055,10 +11021,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-jjOcCZvpkl2+z7JFn0yBOoLQyLoIkNZAs/fYJkUG6VKy6zLPHJGfQJYFHzibB6GJaF/8QrcECtlQ5cpvRHSMEA==
-  /ua-parser-js/0.7.19:
-    dev: false
-    resolution:
-      integrity: sha512-T3PVJ6uz8i0HzPxOF9SWzWAlfN/DavlpQqepn22xgve/5QecC+XMCAtmUNnY7C9StehaV6exjUCI801lOI7QlQ==
   /uglify-js/3.4.10:
     dependencies:
       commander: 2.19.0
@@ -11330,6 +11292,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-L3+bj9ENZ3JisYqITijRlhjgKPs=
+  /warning/4.0.3:
+    dependencies:
+      loose-envify: 1.4.0
+    dev: false
+    resolution:
+      integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
   /watch/0.18.0:
     dependencies:
       exec-sh: 0.2.2
@@ -11835,10 +11803,12 @@ specifiers:
   '@loadable/component': ^5.7.0
   '@types/history': ^4.7.2
   '@types/jest': 24.0.11
+  '@types/loadable__component': ^5.6.0
   '@types/node': 11.11.6
   '@types/react': 16.8.8
   '@types/react-dom': 16.8.3
   '@types/react-redux': ^7.0.5
+  '@types/react-router-dom': ^4.3.1
   connected-react-router: ^6.3.2
   customize-cra: ^0.2.12
   history: ^4.9.0
@@ -11851,7 +11821,7 @@ specifiers:
   react-app-rewired: ^2.1.1
   react-dom: ^16.8.5
   react-redux: ^6.0.1
-  react-router-dom: ^5.0.0
+  react-router-dom: ^4.3.1
   react-scripts: 2.1.8
   react-testing-library: ^6.0.2
   redux: ^4.0.1
