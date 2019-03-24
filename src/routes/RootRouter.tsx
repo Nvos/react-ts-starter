@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-import LoadableUserRouter from './user';
-import LoadableAdminRouter from './admin';
+import user from './user';
+import admin from './admin';
 
 interface Props {}
 

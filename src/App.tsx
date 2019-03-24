@@ -14,7 +14,7 @@ class App extends Component {
   public render() {
     return (
       <Provider store={store}>
-        {/* TODO: Fix strange bug with no Router context for link when using only ConnectedRouter */}
+        {/* Fix strange bug with no Router context for link when using only ConnectedRouter */}
         <Router history={history}>
           <ConnectedRouter history={history}>
             <RootRouter />
