@@ -1,0 +1,22 @@
+import React from 'react';
+{{#if (contains configuration 'connected')}}
+import {connected} from 'react-redux';
+
+interface Props
+  extends ReturnType<typeof mapStateToProps>,
+    ReturnType<typeof mapDispatchToProps> {}
+{{else}}
+interface Props {};
+{{/if}}
+
+const {{name}}: React.FC<Props> = ({ children }) => {
+  return (<div>Component {{name}}</div>);
+};
+
+{{#if (contains configuration 'connected')}}
+const mapStateToProps = (state: any) => ({});
+const mapDispatchToProps = (dispatch: any) => ({});
+export default connected(mapStateToProps, mapDispatchToProps)({{name}});
+{{else}}
+export default {{name}};
+{{/if}}
