@@ -48,7 +48,7 @@
     "variable-name": false,
     "import-name": false,
     "linebreak-style": [true, "CLRF"],
-    // New
+
     // Core rules with custom configurations
     "array-type": [true, "array"],
     "only-arrow-functions": [
