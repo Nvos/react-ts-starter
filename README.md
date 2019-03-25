@@ -3,6 +3,7 @@
 # Useful links
 
 - https://www.learnstorybook.com/react/en/get-started
+- (styled system) https://pricelinelabs.github.io/design-system/Text/
 
 # Scaffold
 
