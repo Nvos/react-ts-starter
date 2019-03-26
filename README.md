@@ -6,6 +6,10 @@
 - (styled system) https://pricelinelabs.github.io/design-system/Text/
 - (styled system) https://github.com/primer/components
 
+# Check
+
+- https://github.com/Raathigesh/majestic
+
 # Scaffold
 
 To scaffold run **npm install -g plop**. Then run **plop component** - component is name of blueprint
