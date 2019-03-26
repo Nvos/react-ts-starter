@@ -4,6 +4,7 @@
 
 - https://www.learnstorybook.com/react/en/get-started
 - (styled system) https://pricelinelabs.github.io/design-system/Text/
+- (styled system) https://github.com/primer/components
 
 # Scaffold
 
