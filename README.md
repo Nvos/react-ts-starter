@@ -23,3 +23,7 @@ To scaffold run **npm install -g plop**. Then run **plop component** - component
   - test
 - (TODO) state slice
 - (TODO) route
+
+# TODO
+
+- (Implement typography Text/Heading components using similiar pattern) https://github.com/instacart/Snacks/blob/master/src/components/Typography/Text.js
