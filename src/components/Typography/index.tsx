@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components/macro';
 import { StyledComponent } from 'styled-components';
 
@@ -25,9 +24,9 @@ type Props = ColorProps &
   FontSizeProps;
 
 type Extensions = {
-  span: StyledComponent<'span', any, Props, never>;
-  p: StyledComponent<'p', any, Props, never>;
-  s: StyledComponent<'s', any, Props, never>;
+  span: StyledComponent<'span', {}, Props, never>;
+  p: StyledComponent<'p', {}, Props, never>;
+  s: StyledComponent<'s', {}, Props, never>;
 };
 
 const Typography = styled.div<Props>`
@@ -37,7 +36,7 @@ const Typography = styled.div<Props>`
   ${lineHeight}
   ${space}
   ${color}
-` as StyledComponent<'div', any, Props, never> & Extensions;
+` as StyledComponent<'div', {}, Props, never> & Extensions;
 
 Typography.defaultProps = {
   fontSize: 1,

@@ -1,7 +1,13 @@
-import { createStore, applyMiddleware, Reducer, combineReducers } from 'redux';
-import rootReducer from './root-reducer';
+import {
+  createStore,
+  applyMiddleware,
+  Reducer,
+  combineReducers,
+  Middleware,
+} from 'redux';
 import createThunkMiddleware from 'redux-thunk';
 import { createEpicMiddleware } from 'redux-observable';
+import rootReducer from './root-reducer';
 import { composeEnhancers } from './utils';
 import api from '@/api';
 import service from '@/service';
@@ -19,19 +25,20 @@ const epicMiddleware = createEpicMiddleware({
   dependencies,
 });
 
-const middlewares: any[] = [thunkMiddleware, epicMiddleware];
+const middlewares: Middleware[] = [thunkMiddleware, epicMiddleware];
 const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 
-const store = createStore(createReducer(), {}, enhancer);
-
-function createReducer(asyncReducers?: { [key: string]: Reducer }) {
+function createReducer(toInject?: { [key: string]: Reducer }) {
   return combineReducers({
     ...rootReducer,
-    ...asyncReducers,
+    ...toInject,
   });
 }
 
+const store = createStore(createReducer(), {}, enhancer);
+
 function injectReducer(key: string, asyncReducer: Reducer) {
+  // eslint-disable-next-line no-console
   console.log('Injecting', key);
   asyncReducers[key] = asyncReducer;
   store.replaceReducer(createReducer(asyncReducers));

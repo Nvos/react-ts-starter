@@ -1,5 +1,4 @@
 import { AnyAction } from 'redux';
-import { injectReducer } from '@/store';
 
 const initialState = {
   items: [],

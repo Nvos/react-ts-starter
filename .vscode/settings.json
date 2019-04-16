@@ -4,5 +4,17 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.tslint": true
   },
-  "files.eol": "\n"
+  "files.eol": "\r\n",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ]
 }

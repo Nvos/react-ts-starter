@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
-import { default as userReducer } from './user/user.reducer';
-import { injectReducer } from '@/store';
+import userReducer from './user/user.reducer';
 
 const adminSlice = combineReducers({
   user: userReducer,

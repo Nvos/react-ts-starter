@@ -11,5 +11,7 @@ module.exports = override(
   addBundleVisualizer({}, true),
   addWebpackAlias({
     ['@']: path.resolve(__dirname, 'src'),
+    //! Is it necessary to disable it in production?
+    'react-dom': '@hot-loader/react-dom',
   }),
 );
