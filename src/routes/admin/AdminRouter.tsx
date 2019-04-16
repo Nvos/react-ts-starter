@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { hot } from 'react-hot-loader/root';
 import { Switch, Route, RouteComponentProps } from 'react-router-dom';
 import AdminList from './view/AdminList';
 import AdminCreate from './view/AdminCreate';
@@ -20,4 +21,4 @@ const AdminRouter: FC<Props> = ({ match }) => {
   );
 };
 
-export default AdminRouter;
+export default hot(AdminRouter);

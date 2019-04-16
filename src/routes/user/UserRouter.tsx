@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { hot } from 'react-hot-loader/root';
 import { Switch, Route, RouteComponentProps } from 'react-router-dom';
 import UserList from './view/UserList';
 import UserCreate from './view/UserCreate';
@@ -16,4 +17,4 @@ const UserRouter: FC<Props> = ({ match }) => {
   );
 };
 
-export default UserRouter;
+export default hot(UserRouter);
