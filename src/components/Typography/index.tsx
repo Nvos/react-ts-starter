@@ -24,9 +24,9 @@ type Props = ColorProps &
   FontSizeProps;
 
 type Extensions = {
-  span: StyledComponent<'span', {}, Props, never>;
-  p: StyledComponent<'p', {}, Props, never>;
-  s: StyledComponent<'s', {}, Props, never>;
+  span: typeof span;
+  p: typeof p;
+  s: typeof s;
 };
 
 const Typography = styled.div<Props>`
@@ -42,24 +42,20 @@ Typography.defaultProps = {
   fontSize: 1,
 };
 
-Typography.span = Typography.withComponent('span');
-Typography.p = Typography.withComponent('p');
-Typography.s = Typography.withComponent('s');
+const span = styled(Typography).attrs({
+  as: 'span',
+});
 
-// const Test: React.FC<React.ComponentProps<typeof Typography>> = props => (
-//   <Typo.span />
-// );
+const p = styled(Typography).attrs({
+  as: 'p',
+});
 
-// class Typo extends React.PureComponent<
-//   React.ComponentProps<typeof Typography>
-// > {
-//   public static span = span;
-//   public static p = p;
-//   public static s = s;
+const s = styled(Typography).attrs({
+  as: 's',
+});
 
-//   public render() {
-//     return <Typography {...this.props} />;
-//   }
-// }
+Typography.span = span;
+Typography.s = s;
+Typography.p = p;
 
 export default Typography;

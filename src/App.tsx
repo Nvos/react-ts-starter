@@ -11,7 +11,7 @@ import store from './store';
 const loadCatalog = async (language: string) => {
   const catalog: Promise<{}> = await import(
     /* webpackMode: "lazy", webpackChunkName: "i18n-[index]" */
-    `../locales/${language}/messages.js`
+    `./locales/${language}/messages.js`
   );
   return catalog;
 };

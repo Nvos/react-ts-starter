@@ -45,7 +45,6 @@ module.exports = {
      */
     '@typescript-eslint/prefer-interface': 'off', // also want to use "type"
     '@typescript-eslint/explicit-function-return-type': 'off', // annoying to force return type
-    '@typescript-eslint/no-empty-interface': 'off',
     /**
      * @description rules of eslint-plugin-react
      */
@@ -63,6 +62,10 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'no-useless-constructor': 'off',
     '@typescript-eslint/no-useless-constructor': 'error',
+    '@typescript-eslint/explicit-member-accessibility': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
   },
   settings: {
     'import/core-modules': [

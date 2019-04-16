@@ -1,9 +1,7 @@
 {
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": true
-  },
+  "eslint.autoFixOnSave": true,
   "files.eol": "\r\n",
   "eslint.validate": [
     "javascript",
