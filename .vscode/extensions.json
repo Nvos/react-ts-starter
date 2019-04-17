@@ -6,9 +6,9 @@
     "oderwat.indent-rainbow",
     "jpoissonnier.vscode-styled-components",
     "christian-kohler.path-intellisense",
-    "wayou.vscode-todo-highlight",
     "Orta.vscode-jest",
     "dbaeumer.vscode-eslint",
-    "mrorz.language-gettext"
+    "mrorz.language-gettext",
+    "aaron-bond.better-comments"
   ]
 }

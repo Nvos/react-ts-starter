@@ -1,1 +1,3 @@
-export { default as RootRouter } from './RootRouter';
+import loadable from '@loadable/component';
+
+export default loadable(() => import('./Router'));

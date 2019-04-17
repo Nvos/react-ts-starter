@@ -1,7 +1,16 @@
 const path = require('path');
+const { lstatSync, readdirSync } = require('fs');
+const { join } = require('path');
+
 const hygen = require('../../../.hygen.js');
 const { helpers } = hygen;
 const { isSet } = helpers;
+
+const isDirectory = source => lstatSync(source).isDirectory();
+const getDirectories = source =>
+  readdirSync(source)
+    .map(name => join(source, name))
+    .filter(isDirectory);
 
 const prompts = [
   {
@@ -27,11 +36,15 @@ const prompts = [
     choices: [
       {
         message: 'Components directory',
-        value: `src/components`,
+        name: 'components',
       },
       {
-        message: 'Current directory',
-        value: path.join(__dirname, process.cwd()),
+        message: 'Module view',
+        name: 'module/view',
+      },
+      {
+        message: 'Module component',
+        name: 'module/component',
       },
     ],
   },
@@ -39,31 +52,45 @@ const prompts = [
 
 module.exports = {
   prompt: ({ inquirer }) => {
-    return inquirer.prompt(prompts).then(answers => {
-      if (!answers.location.includes(`src`)) {
-        throw new Error(
-          'Component generated outside of ./src at ' +
-            data.location.replace('\\', '/'),
-        );
-      }
+    return inquirer
+      .prompt(prompts)
+      .then(answers => {
+        if (answers.location === 'components') {
+          answers.location = 'src/components';
+          return answers;
+        }
 
-      if (
-        isSet(answers.configuration, 'stories') &&
-        !answers.location.includes(`components`)
-      ) {
-        throw new Error('Storybook can only be used in root components');
-      }
+        var choices = [];
+        var modules = getDirectories('src/routes');
+        if (answers.location === 'module/view') {
+          choices = modules.map(it => ({
+            message: it.replace('src/routes/', ''),
+            value: join(it, 'view'),
+          }));
+        } else if (answers.location === 'module/component') {
+          choices = modules.map(it => ({
+            message: it.replace('src/routes/', ''),
+            value: join(it, 'components'),
+          }));
+        }
 
-      if (
-        isSet(answers.configuration, 'stories') &&
-        isSet(answers.configuration, 'connected')
-      ) {
-        throw new Error(
-          'Storybook can only be used on not connected components',
-        );
-      }
+        return inquirer
+          .prompt({
+            type: 'select',
+            name: 'location',
+            message: 'Select module',
+            choices,
+          })
+          .then(nextAnswers => Object.assign({}, answers, nextAnswers));
+      })
+      .then(answers => {
+        if (!answers.location.includes(`src`)) {
+          throw new Error(
+            'Component generated outside of ./src at ' + answers.location,
+          );
+        }
 
-      return answers;
-    });
+        return answers;
+      });
   },
 };

@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Switch, Route, RouteComponentProps } from 'react-router-dom';
-import UserList from './view/UserList';
-import UserCreate from './view/UserCreate';
+import { UserList, UserCreate } from './view';
 
 interface Props extends RouteComponentProps {}
 
-const UserRouter: FC<Props> = ({ match }) => {
+const Router: FC<Props> = ({ match }) => {
   return (
     <div>
       <Switch>
@@ -17,4 +16,4 @@ const UserRouter: FC<Props> = ({ match }) => {
   );
 };
 
-export default hot(UserRouter);
+export default hot(Router);

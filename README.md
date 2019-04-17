@@ -92,7 +92,7 @@ Project uses **Hygen** for scaffolding. To get started install **hygen** globall
   - [x] FC
   - [ ] Class
 - Slice
-- Routing
+- [x] Routing (components/views)
 
 # Useful links
 

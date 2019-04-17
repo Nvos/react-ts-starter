@@ -1,5 +1,1 @@
-import React from 'react';
-
-export default function AdminCreate() {
-  return <div>AdminCreate</div>;
-}
+export { default as AdminCreate } from './AdminCreate';

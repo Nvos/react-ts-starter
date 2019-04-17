@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Switch, Route, RouteComponentProps } from 'react-router-dom';
-import AdminList from './view/AdminList';
-import AdminCreate from './view/AdminCreate';
+import { AdminList, AdminCreate } from './view';
 import { injectReducer } from '@/store';
 import { adminSlice } from './slice';
 
@@ -10,7 +9,7 @@ injectReducer('admin', adminSlice);
 
 interface Props extends RouteComponentProps {}
 
-const AdminRouter: FC<Props> = ({ match }) => {
+const Router: FC<Props> = ({ match }) => {
   return (
     <div>
       <Switch>
@@ -21,4 +20,4 @@ const AdminRouter: FC<Props> = ({ match }) => {
   );
 };
 
-export default hot(AdminRouter);
+export default hot(Router);

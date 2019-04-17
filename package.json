@@ -13,7 +13,8 @@
     "lint:fix": "eslint src/** --ext .ts,.tsx --fix",
     "i18:add-locale": "lingui add-locale",
     "i18:extract": "lingui extract",
-    "i18:compile": "lingui compile"
+    "i18:compile": "lingui compile",
+    "format:fix": "prettier --write"
   },
   "dependencies": {
     "@lingui/react": "^2.7.4",

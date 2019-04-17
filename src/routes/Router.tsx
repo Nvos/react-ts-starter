@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
+import { hot } from 'react-hot-loader/root';
 import UserRouter from './user';
 import AdminRouter from './admin';
 
 interface Props {}
 
-const RootRouter: FC<Props> = () => {
+const Router: FC<Props> = () => {
   return (
     <div>
       <nav>
@@ -32,4 +33,4 @@ const RootRouter: FC<Props> = () => {
   );
 };
 
-export default RootRouter;
+export default hot(Router);
