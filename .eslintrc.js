@@ -66,6 +66,12 @@ module.exports = {
     '@typescript-eslint/no-empty-interface': 'off',
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: ['**/*.test.ts', '**/*.test.tsx', '**/*.stories.tsx'],
+      },
+    ],
   },
   settings: {
     'import/core-modules': [

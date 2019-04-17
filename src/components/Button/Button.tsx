@@ -1,8 +1,12 @@
-/* eslint-disable react/prefer-stateless-function */
-import React from 'react';
+import styled from 'styled-components/macro';
+import { SpaceProps, space } from 'styled-system';
 
-const Button: React.FC = ({ children }) => {
-  return <button type="button">{children}</button>;
-};
+interface ButtonProps extends SpaceProps {
+  loading?: boolean;
+}
+
+const Button = styled.button<ButtonProps>`
+  ${space}
+`;
 
 export default Button;

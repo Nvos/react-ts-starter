@@ -6,12 +6,10 @@ import {
   Middleware,
 } from 'redux';
 import createThunkMiddleware from 'redux-thunk';
-import { createEpicMiddleware } from 'redux-observable';
 import rootReducer from './root-reducer';
 import { composeEnhancers } from './utils';
 import api from '@/api';
 import service from '@/service';
-import rootEpic from './root-epic';
 
 const asyncReducers: { [key: string]: Reducer } = {};
 
@@ -21,11 +19,8 @@ const dependencies = {
 };
 
 const thunkMiddleware = createThunkMiddleware.withExtraArgument(dependencies);
-const epicMiddleware = createEpicMiddleware({
-  dependencies,
-});
 
-const middlewares: Middleware[] = [thunkMiddleware, epicMiddleware];
+const middlewares: Middleware[] = [thunkMiddleware];
 const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 
 function createReducer(toInject?: { [key: string]: Reducer }) {
@@ -43,8 +38,6 @@ function injectReducer(key: string, asyncReducer: Reducer) {
   asyncReducers[key] = asyncReducer;
   store.replaceReducer(createReducer(asyncReducers));
 }
-
-epicMiddleware.run(rootEpic);
 
 export default store;
 export { injectReducer };

@@ -1,7 +1,6 @@
 declare module 'Types' {
   import { StateType, ActionType } from 'typesafe-actions';
   import { ThunkAction, ThunkDispatch } from 'redux-thunk';
-  import { Epic as InnerEpic } from 'redux-observable';
 
   export type RootAction = ActionType<typeof import('./root-action').default>;
   export type RootState = StateType<typeof import('./root-reducer').default>;
@@ -15,6 +14,5 @@ declare module 'Types' {
     Dependencies,
     RootAction
   >;
-  export type Epic = InnerEpic<RootAction, RootAction, RootState, Dependencies>;
   export type Dispatch = ThunkDispatch<RootState, Dependencies, RootAction>;
 }

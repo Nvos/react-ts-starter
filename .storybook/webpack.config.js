@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = async config => {
+module.exports = ({ config, mode }) => {
   config.module.rules.push({
     test: /\.tsx?$/,
     include: path.resolve(__dirname, '../src'),
