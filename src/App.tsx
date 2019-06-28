@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
 import { Router } from 'react-router-dom';
 import { I18nProvider } from '@lingui/react';
 import { hot } from 'react-hot-loader/root';
 import history from './history';
-import { RootRouter } from '@/routes';
+import RootRouter from '@/routes';
 import store from './store';
 
 const loadCatalog = async (language: string) => {
@@ -29,11 +28,8 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <I18nProvider language={language} catalogs={catalogs}>
-        {/* Fix strange bug with no Router context for link when using only ConnectedRouter */}
         <Router history={history}>
-          <ConnectedRouter history={history}>
-            <RootRouter />
-          </ConnectedRouter>
+          <RootRouter />
         </Router>
       </I18nProvider>
     </Provider>

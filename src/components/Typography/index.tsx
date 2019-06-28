@@ -23,12 +23,6 @@ type Props = ColorProps &
   FontWeightProps &
   FontSizeProps;
 
-type Extensions = {
-  span: typeof span;
-  p: typeof p;
-  s: typeof s;
-};
-
 const Typography = styled.div<Props>`
   ${fontSize}
   ${fontWeight}
@@ -36,7 +30,7 @@ const Typography = styled.div<Props>`
   ${lineHeight}
   ${space}
   ${color}
-` as StyledComponent<'div', {}, Props, never> & Extensions;
+`;
 
 Typography.defaultProps = {
   fontSize: 1,
@@ -44,18 +38,14 @@ Typography.defaultProps = {
 
 const span = styled(Typography).attrs({
   as: 'span',
-});
+})<Props>``;
 
 const p = styled(Typography).attrs({
   as: 'p',
-});
+})<Props>``;
 
 const s = styled(Typography).attrs({
   as: 's',
-});
+})<Props>``;
 
-Typography.span = span;
-Typography.s = s;
-Typography.p = p;
-
-export default Typography;
+export { span, p, s };

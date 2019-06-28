@@ -1,2 +1,3 @@
 export * from './Button';
-export * from './Typography';
+import * as Typography from './Typography';
+export { Typography };

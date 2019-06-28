@@ -7,7 +7,7 @@ import { adminSlice } from './slice';
 
 injectReducer('admin', adminSlice);
 
-interface Props extends RouteComponentProps {}
+type Props = RouteComponentProps;
 
 const Router: FC<Props> = ({ match }) => {
   return (

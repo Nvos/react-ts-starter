@@ -9,6 +9,7 @@
     "Orta.vscode-jest",
     "dbaeumer.vscode-eslint",
     "mrorz.language-gettext",
-    "aaron-bond.better-comments"
+    "aaron-bond.better-comments",
+    "vincaslt.highlight-matching-tag"
   ]
 }

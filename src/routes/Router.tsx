@@ -4,7 +4,7 @@ import { hot } from 'react-hot-loader/root';
 import UserRouter from './user';
 import AdminRouter from './admin';
 
-interface Props {}
+type Props = {};
 
 const Router: FC<Props> = () => {
   return (

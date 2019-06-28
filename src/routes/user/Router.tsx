@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader/root';
 import { Switch, Route, RouteComponentProps } from 'react-router-dom';
 import { UserList, UserCreate } from './view';
 
-interface Props extends RouteComponentProps {}
+type Props = RouteComponentProps;
 
 const Router: FC<Props> = ({ match }) => {
   return (
