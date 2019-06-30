@@ -2,10 +2,11 @@ import { rootEpic } from './root-epic';
 import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Epic } from 'redux-observable';
+import { RootEpic } from 'Types';
 
 const epic$ = new BehaviorSubject(rootEpic);
 
-const hotReloadingEpic = (action$: any, state$: any, dependencies: {}) =>
+const hotReloadingEpic: RootEpic = (action$, state$, dependencies) =>
   epic$.pipe(switchMap(epic => epic(action$, state$, dependencies)));
 
 function injectEpic(epic: Epic) {
