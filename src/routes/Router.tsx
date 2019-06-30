@@ -1,8 +1,10 @@
+import StatisticRouter from './statistic';
 import React, { FC } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
 import UserRouter from './user';
 import AdminRouter from './admin';
+import { NotFound } from '@/components';
 
 type Props = {};
 
@@ -26,8 +28,10 @@ const Router: FC<Props> = () => {
         </ul>
       </nav>
       <Switch>
+        <Route path="/statistic" component={StatisticRouter} />
         <Route path="/user" component={UserRouter} />
         <Route path="/admin" component={AdminRouter} />
+        <Route component={NotFound} />
       </Switch>
     </div>
   );

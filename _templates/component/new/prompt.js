@@ -1,10 +1,5 @@
-const path = require('path');
 const { lstatSync, readdirSync } = require('fs');
 const { join } = require('path');
-
-const hygen = require('../../../.hygen.js');
-const { helpers } = hygen;
-const { isSet } = helpers;
 
 const isDirectory = source => lstatSync(source).isDirectory();
 const getDirectories = source =>
@@ -46,6 +41,10 @@ const prompts = [
         message: 'Module component',
         name: 'module/component',
       },
+      {
+        message: 'View',
+        name: 'view',
+      },
     ],
   },
 ];
@@ -57,6 +56,11 @@ module.exports = {
       .then(answers => {
         if (answers.location === 'components') {
           answers.location = 'src/components';
+          return answers;
+        }
+
+        if (answers.location === 'view') {
+          answers.location = 'src/routes/view';
           return answers;
         }
 
@@ -88,6 +92,14 @@ module.exports = {
           throw new Error(
             'Component generated outside of ./src at ' + answers.location,
           );
+        }
+
+        var isGlobal =
+          answers.location.includes('src/components') ||
+          answers.location.includes('src\\components');
+
+        if (isGlobal && answers.configuration.indexOf('connected') !== -1) {
+          throw new Error(`Global component should not use redux`);
         }
 
         return answers;

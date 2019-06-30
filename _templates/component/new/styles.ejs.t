@@ -3,10 +3,6 @@ to: "<%= h.isSet(configuration, 'styles') ? h.joinPath(location, name, 'styles.t
 ---
 import styled from 'styled-components/macro';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div``;
 
-`;
-
-export {
-  Wrapper
-};
+export { Wrapper };

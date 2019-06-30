@@ -1,6 +1,7 @@
 ---
 to: "<%= h.isView(location) ? h.joinPath(location, '..', '/Router.tsx') : null %>"
 inject: true
-after: ./view
+prepend: true
+skip_if: './view'
 ---
-import { <%=name%> } from './view';
+import * as Views from './view';

@@ -4,7 +4,7 @@ import { Router } from 'react-router-dom';
 import { I18nProvider } from '@lingui/react';
 import { hot } from 'react-hot-loader/root';
 import history from './history';
-import RootRouter from '@/routes';
+import { RootRouter } from '@/routes';
 import store from './store';
 
 const loadCatalog = async (language: string) => {

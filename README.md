@@ -84,15 +84,30 @@ Views are grouped by feature into named modules (eg. user, admin, statistic, ...
 
 # Codegen
 
-Project uses **Hygen** for scaffolding. To get started install **hygen** globally using either npm or yarn. Then run **hygen** in terminal which will list all available generators. When running any generator you'll be provided with few generation options.
+Project uses **Hygen** for scaffolding. To get started install **hygen** globally using either npm or yarn (**hygen should be installed after using setup.sh!**). Then run **hygen** in terminal which will list all available generators. When running any generator you'll be provided with generation options.
 
 ## Generators
 
 - Component
   - [x] FC
   - [ ] Class
-- Slice
+- Slice (inject + normal)
 - [x] Routing (components/views)
+
+# Getting started
+
+Run setup.sh bash script, which will install commit convention, codegen tooling, then install dependencies by running **yarn**
+
+# Worthwhile libraries
+
+- Graphql
+  - Apollo
+  - Urql
+  - Graphql code generator
+- Websocket
+  - Sockette
+  - Redux-websocket (https://github.com/giantmachines/redux-websocket) - thought it is pretty easy to write own wrapper using sockette which might give more control
+  - If using redux-observable or just rxjs there's websocket handling implemented https://rxjs.dev/api/webSocket/webSocket
 
 # Useful links
 
@@ -100,10 +115,11 @@ Project uses **Hygen** for scaffolding. To get started install **hygen** globall
 - Typesafe react/redux https://github.com/piotrwitek/react-redux-typescript-guide, contains standard typed react patterns compatible with latest typescript versions
 - React/Typescript cheatsheet https://github.com/sw-yx/react-typescript-cheatsheet
 - Component testing with react-tesing-library https://react-testing-examples.com/
+- Good example of redux persisted error handling inside container/view (https://github.com/devhubapp/devhub/blob/master/packages/components/src/screens/LoginScreen.tsx)
 
 # TODO
 
 - Finish codegen
 - Project structure documentation
-- Apollo
-- Typing redux (global + module scoped slices)
+- Typing redux (global + module scoped slices + codegen)
+- Authentication (create Private/Protected route component and introduce it to codegen options for view). To make it usable with multiple apis it should take function as param which checks for access permissions

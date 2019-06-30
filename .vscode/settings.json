@@ -16,5 +16,17 @@
       "autoFix": true
     }
   ],
-  "todo-tree.excludeGlobs": ["node_modules"]
+  "todo-tree.excludeGlobs": ["node_modules"],
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "[typescript]": {
+    "editor.formatOnSave": false
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": false
+  }
 }

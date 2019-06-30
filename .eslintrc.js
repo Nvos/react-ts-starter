@@ -10,6 +10,11 @@ module.exports = {
     'react/jsx-indent': 'off',
     '@typescript-eslint/prefer-interface': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
+    'no-use-before-define': 'off',
+    'react/jsx-indent-props': 'off',
+  },
+  env: {
+    "jest": true
   },
   globals: {},
 };

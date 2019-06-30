@@ -3,11 +3,15 @@ const {
   disableEsLint,
   addBundleVisualizer,
   addWebpackAlias,
+  addBabelPlugins,
 } = require('customize-cra');
 const path = require('path');
 
 module.exports = override(
   disableEsLint(),
+  ...addBabelPlugins(
+    "react-hot-loader/babel",
+  ),
   addBundleVisualizer({}, true),
   addWebpackAlias({
     ['@']: path.resolve(__dirname, 'src'),
