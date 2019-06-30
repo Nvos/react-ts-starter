@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { Epic } from 'redux-observable';
 import * as globalActions from './global.action';
+
 const rootReducer = combineReducers({
   // Inject reducer (DO NOT REMOVE)
 });
