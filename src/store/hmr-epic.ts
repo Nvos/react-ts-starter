@@ -1,8 +1,8 @@
-import { rootEpic } from './root-epic';
 import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Epic } from 'redux-observable';
 import { RootEpic } from 'Types';
+import { rootEpic } from './root-epic';
 
 const epic$ = new BehaviorSubject(rootEpic);
 

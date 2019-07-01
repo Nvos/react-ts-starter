@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { setConfig } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -7,8 +6,10 @@ import * as cssprop from 'styled-components/cssprop';
 import App from './App';
 
 setConfig({
-  ignoreSFC: true, // RHL will be __completely__ disabled for SFC
-  pureRender: true, // RHL will not change render method
+  // RHL will be __completely__ disabled for SFC
+  ignoreSFC: true,
+  // RHL will not change render method
+  pureRender: true,
 });
 
 ReactDOM.render(<App />, document.getElementById('root'));

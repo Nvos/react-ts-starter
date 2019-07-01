@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import * as Typography from '.';
+import * as Typography from './Typography';
 
 storiesOf('Text', module).add('Standard text variants', () => (
   <div>

@@ -20,9 +20,15 @@ const App: React.FC = () => {
   const [catalogs, setCatalog] = useState({});
 
   useEffect(() => {
-    loadCatalog(language).then(result => {
-      setCatalog({ ...catalogs, [language]: result });
-    });
+    loadCatalog(language)
+      .then(result => {
+        setCatalog(catalogs => ({ ...catalogs, [language]: result }));
+      })
+      .catch(err => {
+        if (err) {
+          console.log(`Failed to load translations for ${language}`);
+        }
+      });
   }, [language]);
 
   return (
