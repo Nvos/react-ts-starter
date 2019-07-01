@@ -116,6 +116,10 @@ Run setup.sh bash script, which will install commit convention, codegen tooling,
 - React/Typescript cheatsheet https://github.com/sw-yx/react-typescript-cheatsheet
 - Component testing with react-tesing-library https://react-testing-examples.com/
 - Good example of redux persisted error handling inside container/view (https://github.com/devhubapp/devhub/blob/master/packages/components/src/screens/LoginScreen.tsx)
+- Modern ui inspiration
+  - Stripe
+  - Fullstory
+  - https://medium.muz.li/30-handpicked-excellent-dashboards-347e2407a057
 
 # TODO
 
