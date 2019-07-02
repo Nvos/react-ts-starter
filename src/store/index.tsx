@@ -33,8 +33,8 @@ const store = createStore(createReducer(), {}, enhancer);
 // FIX: Strange typing problem (for now untyped)
 // Should fix itself if there's any epic in root module
 const injectEpic =
-  process.env.NODE_ENV !== 'production' ? injectHmrEpic : injectStandardEpic;
-if (process.env.NODE_ENV !== 'production') {
+  process.env.NODE_ENV === 'development' ? injectHmrEpic : injectStandardEpic;
+if (process.env.NODE_ENV === 'development') {
   epicMiddleware.run(hotReloadingEpic as any);
 } else {
   epicMiddleware.run(rootEpic as any);

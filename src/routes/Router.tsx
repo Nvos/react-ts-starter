@@ -9,7 +9,7 @@ type Props = {};
 
 const Router: FC<Props> = () => {
   return (
-    <div>
+    <>
       <nav>
         <ul>
           <li>
@@ -31,7 +31,7 @@ const Router: FC<Props> = () => {
         <Route path="/admin" component={AdminRouter} />
         <Route component={NotFound} />
       </Switch>
-    </div>
+    </>
   );
 };
 

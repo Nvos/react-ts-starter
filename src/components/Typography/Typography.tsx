@@ -1,5 +1,3 @@
-import { StyledComponent } from 'styled-components';
-
 import {
   fontSize,
   fontWeight,
