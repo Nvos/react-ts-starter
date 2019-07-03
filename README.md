@@ -108,6 +108,7 @@ Run setup.sh bash script, which will install commit convention, codegen tooling,
   - Sockette
   - Redux-websocket (https://github.com/giantmachines/redux-websocket) - thought it is pretty easy to write own wrapper using sockette which might give more control
   - If using redux-observable or just rxjs there's websocket handling implemented https://rxjs.dev/api/webSocket/webSocket
+- Hotkeys/shortcuts - https://github.com/greena13/react-hotkeys
 
 # Useful links
 
