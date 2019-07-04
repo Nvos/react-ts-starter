@@ -3,9 +3,11 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { I18nProvider } from '@lingui/react';
 import { hot } from 'react-hot-loader/root';
+import { ThemeProvider } from 'styled-components';
 import history from './history';
 import { RootRouter } from '@/routes';
 import store from './store';
+import { theme } from './theme';
 
 const loadCatalog = async (language: string) => {
   const catalog: Promise<{}> = await import(
@@ -33,11 +35,13 @@ const App: React.FC = () => {
 
   return (
     <Provider store={store}>
-      <I18nProvider language={language} catalogs={catalogs}>
-        <Router history={history}>
-          <RootRouter />
-        </Router>
-      </I18nProvider>
+      <ThemeProvider theme={theme}>
+        <I18nProvider language={language} catalogs={catalogs}>
+          <Router history={history}>
+            <RootRouter />
+          </Router>
+        </I18nProvider>
+      </ThemeProvider>
     </Provider>
   );
 };
