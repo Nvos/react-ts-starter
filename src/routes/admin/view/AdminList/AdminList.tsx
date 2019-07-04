@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { AdminAction } from 'Types';
-import { socketConnect, socketDisconnect } from '@/store/slice/global.action';
+import {
+  socketConnect,
+  socketDisconnect,
+  socketEmit,
+} from '@/store/slice/global.action';
 
 const AdminList: FC = () => {
   const dispatch = useDispatch();
@@ -14,6 +18,13 @@ const AdminList: FC = () => {
 
       <button type="button" onClick={() => dispatch(socketDisconnect())}>
         UNSUB
+      </button>
+
+      <button
+        type="button"
+        onClick={() => dispatch(socketEmit({ name: 'Jeff' }))}
+      >
+        EMIT
       </button>
     </>
   );

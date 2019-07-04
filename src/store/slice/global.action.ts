@@ -10,9 +10,10 @@ export const socketDisconnect = createStandardAction('[Socket] Disconnect')<
 export const socketMessage = createStandardAction('[Socket] Message')<
   undefined
 >();
-export const socketPrepare = createStandardAction('[Socket] Prepare')<
+export const socketReconnected = createStandardAction('[Socket] Reconnected')<
   undefined
 >();
 export const socketConnectionDropped = createStandardAction(
   '[Socket] Connection dropped',
 )<undefined>();
+export const socketEmit = createStandardAction('[Socket] Emit')<any>();

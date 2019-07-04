@@ -1,4 +1,4 @@
-
+// Poor example on websocket server... but it sortof works
 const express = require('express');
 const WebSocket = require('ws');
 
@@ -10,17 +10,26 @@ wss.on('connection', function(ws) {
         wss.clients.forEach(function(client) {
             client.send(message);
         })
+        console.log(message);
     })
     
     let i = 0;
-    setInterval(() => {
+    let interval = setInterval(() => {
         i++;
         wss.clients.forEach(function(client) {
             client.send(JSON.stringify({type: 'Stuff'}));
-            console.log("Sending " + i)
+            console.log("Sending " + i);
+            console.log("Client count: ", wss.clients.size)
         });
         console.log("interval " + i)
     }, 1000)
+    
+    ws.on('close', () => {
+        console.log('close')
+    
+        i = 0;
+        clearInterval(interval);
+    })
 });
 
 
