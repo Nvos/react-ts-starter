@@ -36,7 +36,7 @@
     "rxjs": "^6.5.2",
     "styled-components": "^4.3.2",
     "styled-system": "^5.0.12",
-    "typesafe-actions": "^5.0.0-2",
+    "typesafe-actions": "^5.0.0-3",
     "ws": "^7.0.1"
   },
   "resolutions": {
@@ -88,8 +88,6 @@
     "react-docgen-typescript-loader": "^3.1.0",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "storybook-addon-jsx": "^7.1.2",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.0.1",
     "typescript": "~3.5.2",
     "webpack-bundle-analyzer": "^3.3.2"
   },
