@@ -109,6 +109,17 @@ Run setup.sh bash script, which will install commit convention, codegen tooling,
   - Redux-websocket (https://github.com/giantmachines/redux-websocket) - thought it is pretty easy to write own wrapper using sockette which might give more control
   - If using redux-observable or just rxjs there's websocket handling implemented https://rxjs.dev/api/webSocket/webSocket
 - Hotkeys/shortcuts - https://github.com/greena13/react-hotkeys
+- Select
+  - (No text filter) https://github.com/benbowes/react-responsive-select#readme
+  - (customizable) https://github.com/JedWatson/react-select
+  - (not very customizable) https://github.com/react-component/select
+- Modal
+  - https://github.com/reactjs/react-modal
+- Hight quality customizable components (can pick specific ones)
+  - https://atlaskit.atlassian.com/packages
+    - https://atlaskit.atlassian.com/packages/core/select
+    - https://atlaskit.atlassian.com/packages/core/modal-dialog
+    - https://atlaskit.atlassian.com/packages/core/drawer
 
 # Useful links
 

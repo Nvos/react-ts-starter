@@ -6,9 +6,9 @@ import { hot } from 'react-hot-loader/root';
 import { Switch, Route, RouteComponentProps } from 'react-router-dom';
 import { injectReducer } from '@/store';
 import { NotFound } from '@/components';
-import rootSlice from './slice';
+import { rootReducer } from './slice';
 
-injectReducer('<%=name%>', rootSlice);
+injectReducer('<%=name%>', rootReducer);
 
 type Props = RouteComponentProps;
 
