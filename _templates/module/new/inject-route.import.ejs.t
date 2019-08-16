@@ -1,6 +1,6 @@
 ---
-to: src/routes/Router.tsx
+to: "<%=h.joinPath('src', 'routes', 'Router.tsx')%>"
 inject: true
-prepend: true
+after: './view'
 ---
 import <%= h.changeCase.pascal(name) %>Router from './<%=name%>';

@@ -1,5 +1,5 @@
 ---
-to: <%=location%>/index.ts
+to: "<%=h.joinPath(location, 'index.ts')%>"
 before: // Inject reducer
 inject: true
 ---

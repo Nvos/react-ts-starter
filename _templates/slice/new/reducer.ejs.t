@@ -1,12 +1,11 @@
 ---
-to: <%=location%>/<%=name%>/reducer.ts
+to: "<%=h.joinPath(location, name, name + '.reducer.ts')%>"
 ---
 import { createReducer } from 'typesafe-actions';
-import {} from 'Models';
-import * as actions from './action';
-import * as constants from './constant';
-import { rootAction } from '@/store';
+import {} from '@/model';
 import { <%=module%>Action } from 'Types';
+import * as actions from './<%=name%>.action';
+import * as constants from './<%=name%>.constant';
 
 interface State {}
 
@@ -16,9 +15,6 @@ const reducer = createReducer<State, <%=module%>Action>(initialState, {
   // Inject (DO NOT REMOVE)
 })
   // Inject single (DO NOT REMOVE)
-  .handleAction(
-    [actions.bobReset, rootAction.global.resetAll],
-    (state, action) => initialState,
-  );
+  .handleAction(actions.<%=name%>ResetAction, (state, action) => initialState);
 
 export default reducer;

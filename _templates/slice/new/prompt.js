@@ -1,11 +1,5 @@
-const { lstatSync, readdirSync } = require('fs');
 const { join, sep } = require('path');
-
-const isDirectory = source => lstatSync(source).isDirectory();
-const getDirectories = source =>
-  readdirSync(source)
-    .map(name => join(source, name))
-    .filter(isDirectory);
+const { getDirectories, isRootSlice, uppercase } = require('../../utils');
 
 const prompts = [
   {
@@ -15,22 +9,26 @@ const prompts = [
   },
 ];
 
+var modules = getDirectories(join('src', 'routes'));
+
 module.exports = {
   prompt: ({ inquirer }) => {
     return inquirer
       .prompt(prompts)
       .then(answers => {
-        var modules = getDirectories('src/routes');
+        // List of modules/directories where codegen is possible
         var choices = modules.map(it => ({
           message: join(it, 'slice'),
           value: join(it, 'slice'),
         }));
 
+        // Add possibility to use root slice for codegen
         var choices = [{
           message: join('src', 'store', 'slice'),
           value: join('src', 'store', 'slice'),
         },...choices]
 
+        // Return prompt with choice of directory/module
         return inquirer
           .prompt({
             type: 'select',
@@ -41,16 +39,17 @@ module.exports = {
           .then(nextAnswers => Object.assign({}, answers, nextAnswers));
       })
       .then(answers => {
-        var isRoot = answers.location === 'src/store/slice' || answers.location === 'src\\store\\slice'
-        if (isRoot) {
+        // Provide correct module name to be used in templates
+        if (isRootSlice(answers.location)) {
+          // Root slice
           answers.module = 'Root';
         } else {
+          // Module/directory slice
           var split = answers.location.split(sep);
-          answers.module = split[2].charAt(0).toUpperCase() + split[2].slice(1);
+          answers.module = uppercase(split[2]);
         }
         
-        console.log(answers.module, answers.location);
-        throw new Error('!')
+        console.warn(`If you'r not using epics, remove epic imports from generated slice otherwise there will be linting and type errors!`)
         return answers;
       });
   },

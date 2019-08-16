@@ -3,7 +3,8 @@ import { Switch, Route, Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
 import UserRouter from './user';
 import AdminRouter from './admin';
-import { NotFound } from '@/components';
+import { NotFound } from '@/component';
+import * as navigation from './root.routes';
 
 type Props = {};
 
@@ -27,8 +28,8 @@ const Router: FC<Props> = () => {
         </ul>
       </nav>
       <Switch>
-        <Route path="/user" component={UserRouter} />
-        <Route path="/admin" component={AdminRouter} />
+        <Route path={navigation.USER_ROUTER} component={UserRouter} />
+        <Route path={navigation.ADMIN_ROUTER} component={AdminRouter} />
         <Route component={NotFound} />
       </Switch>
     </>

@@ -1,10 +1,10 @@
 ---
-to: <%=location%>/<%=name%>/action.ts
+to: "<%=h.joinPath(location, name, name + '.action.ts')%>"
 ---
-import * as constants from './constant';
 import { createAsyncAction, createStandardAction } from 'typesafe-actions';
-import {} from 'Models';
+import * as constants from './<%=name%>.constant';
+import {} from '@/model';
 
-export const <%=name%>Reset = createStandardAction(constants.<%=h.changeCase.upper(name)%>_RESET)<
+export const <%=name%>ResetAction = createStandardAction(constants.<%=h.changeCase.upper(name)%>_RESET)<
   undefined
 >();

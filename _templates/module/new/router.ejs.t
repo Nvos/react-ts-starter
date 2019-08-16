@@ -1,11 +1,11 @@
 ---
-to: src/routes/<%=name%>/Router.tsx
+to: "<%=h.joinPath('src', 'routes', name, 'Router.tsx')%>"
 ---
 import React, { FC } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Switch, Route, RouteComponentProps } from 'react-router-dom';
 import { injectReducer } from '@/store';
-import { NotFound } from '@/components';
+import { NotFound } from '@/component';
 import { rootReducer } from './slice';
 
 injectReducer('<%=name%>', rootReducer);

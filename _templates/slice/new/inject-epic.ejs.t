@@ -1,6 +1,6 @@
 ---
-to: <%=location%>/index.ts
+to: "<%=h.joinPath(location, 'index.ts')%>"
 before: // Inject epic
 inject: true
 ---
-  ...<%=name%>Epic,
+  ...Object.values(<%=name%>Epics || {}),

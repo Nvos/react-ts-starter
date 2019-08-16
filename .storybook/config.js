@@ -1,11 +1,11 @@
 import { configure } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
-// automatically import all files ending in *.stories.tsx
-const req = require.context('../src', true, /\.stories\.tsx$/);
 
 setOptions({
   hierarchySeparator: /\//,
   hierarchyRootSeparator: /\|/,
+  showPanel: true,
+  panelPosition: 'bottom',
 });
 
 function loadStories() {

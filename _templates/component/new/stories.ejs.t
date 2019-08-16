@@ -3,14 +3,18 @@ to: "<%= h.isSet(configuration, 'stories') ? h.joinPath(location, name, name + '
 ---
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered/react';
 import <%=name%> from './<%=name%>';
+import Notes from './<%=name%>.note.md';
 
-storiesOf('<%=name%>', module).add(
+storiesOf('<%=name%>', module)
+.addDecorator(centered)
+.add(
   '<%=name%> standard',
   () => (
     <<%=name%> />
   ),
   {
-    info: { inline: true },
+    notes: { markdown: Notes },
   },
 );

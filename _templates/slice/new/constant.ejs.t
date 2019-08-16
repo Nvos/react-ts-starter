@@ -1,4 +1,4 @@
 ---
-to: <%=location%>/<%=name%>/constant.ts
+to: "<%=h.joinPath(location, name, name + '.constant.ts')%>"
 ---
-export const <%=h.changeCase.upper(name)%>_RESET = '[<%=h.changeCase.camel(name)%>] Reset';
+export const <%=h.changeCase.upper(name)%>_RESET = '[<%=module%>/<%=h.changeCase.camel(name)%>] Reset';

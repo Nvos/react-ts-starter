@@ -1,5 +1,5 @@
 ---
-to: src/routes/<%=name%>/index.tsx
+to: "<%=h.joinPath('src', 'routes', name, 'index.tsx')%>"
 ---
 import loadable from '@loadable/component';
 

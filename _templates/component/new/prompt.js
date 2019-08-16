@@ -1,11 +1,38 @@
-const { lstatSync, readdirSync } = require('fs');
-const { join } = require('path');
+const { join, sep } = require('path');
+const { getDirectories, isRootComponent, isRootView, uppercase } = require('../../utils');
 
-const isDirectory = source => lstatSync(source).isDirectory();
-const getDirectories = source =>
-  readdirSync(source)
-    .map(name => join(source, name))
-    .filter(isDirectory);
+const OPTIONS = {
+  COMPONENT: 'COMPONENT',
+  MODULE_COMPONENT: 'MODULE_COMPONENT',
+  VIEW: 'VIEW',
+  MODULE_VIEW: 'MODULE_VIEW'
+}
+
+var modules = getDirectories(join('src', 'routes'));
+
+var choices = [ 
+  {
+  message: 'Component',
+  name: OPTIONS.COMPONENT,
+  },
+  {
+    message: 'View',
+    name: OPTIONS.VIEW,
+  },
+];
+
+if (modules.length > 0) {
+  choices = [...choices, 
+    {
+      message: 'Module view',
+      name: OPTIONS.MODULE_VIEW,
+    },
+    {
+      message: 'Module component',
+      name: OPTIONS.MODULE_COMPONENT,
+    },
+  ]
+}
 
 const prompts = [
   {
@@ -28,24 +55,7 @@ const prompts = [
     type: 'select',
     name: 'location',
     message: 'Select component location',
-    choices: [
-      {
-        message: 'Components directory',
-        name: 'components',
-      },
-      {
-        message: 'Module view',
-        name: 'module/view',
-      },
-      {
-        message: 'Module component',
-        name: 'module/component',
-      },
-      {
-        message: 'View',
-        name: 'view',
-      },
-    ],
+    choices,
   },
 ];
 
@@ -54,52 +64,72 @@ module.exports = {
     return inquirer
       .prompt(prompts)
       .then(answers => {
-        if (answers.location === 'components') {
-          answers.location = 'src/components';
-          return answers;
+        // Depending on location selected update path or provide further prompts
+        switch(answers.location) {
+          case OPTIONS.COMPONENT: {
+            answers.location = join('src', 'component');
+            return answers;
+          }
+          case OPTIONS.VIEW: {
+            answers.location = join('src', 'routes', 'view');
+            return answers;
+          }
+          case OPTIONS.MODULE_COMPONENT: {
+            return inquirer
+              .prompt({
+                type: 'select',
+                name: 'location',
+                message: 'Select module',
+                choices: modules.map(it => ({
+                  message: it,
+                  value: join(it, 'component'),
+                })),
+              })
+              .then(nextAnswers => Object.assign({}, answers, nextAnswers));
+          }
+          case OPTIONS.MODULE_VIEW: {
+            return inquirer
+              .prompt({
+                type: 'select',
+                name: 'location',
+                message: 'Select module',
+                choices: modules.map(it => ({
+                  message: it,
+                  value: join(it, 'view'),
+                })),
+              })
+              .then(nextAnswers => Object.assign({}, answers, nextAnswers));
+          }
+          default: 
+            throw new Error('Unsupported option selected: ' + answers.location);
         }
-
-        if (answers.location === 'view') {
-          answers.location = 'src/routes/view';
-          return answers;
-        }
-
-        var choices = [];
-        var modules = getDirectories('src/routes');
-        if (answers.location === 'module/view') {
-          choices = modules.map(it => ({
-            message: it.replace('src/routes/', ''),
-            value: join(it, 'view'),
-          }));
-        } else if (answers.location === 'module/component') {
-          choices = modules.map(it => ({
-            message: it.replace('src/routes/', ''),
-            value: join(it, 'components'),
-          }));
-        }
-
-        return inquirer
-          .prompt({
-            type: 'select',
-            name: 'location',
-            message: 'Select module',
-            choices,
-          })
-          .then(nextAnswers => Object.assign({}, answers, nextAnswers));
       })
       .then(answers => {
-        if (!answers.location.includes(`src`)) {
-          throw new Error(
-            'Component generated outside of ./src at ' + answers.location,
-          );
+        // Provide correct module name to be used in templates
+        if (isRootComponent(answers.location) || isRootView(answers.location)) {
+          // Root slice
+          answers.module = 'Root';
+        } else {
+          // Module/directory slice
+          var split = answers.location.split(sep);
+          answers.module = uppercase(split[2]);
+        }
+        
+        return answers;
+      })
+       // Additional validation step
+      .then(answers => {
+        var isView = answers.location.includes('view');
+        if (answers.name[0] !== answers.name[0].toUpperCase()) {
+          throw new Error(`Component name should use pascal case e.g. FancyThing`);
         }
 
-        var isGlobal =
-          answers.location.includes('src/components') ||
-          answers.location.includes('src\\components');
+        if (isView && !answers.name.endsWith('View')) {
+          throw new Error(`View name should end with View e.g. StatisticView`);
+        }
 
-        if (isGlobal && answers.configuration.indexOf('connected') !== -1) {
-          throw new Error(`Global component should not use redux`);
+        if (answers.configuration.includes('connected') && !isView) {
+          throw new Error(`Component should not use redux directly`);
         }
 
         return answers;
