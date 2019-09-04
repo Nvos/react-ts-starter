@@ -104,7 +104,7 @@
     "src/**/*.{ts,tsx}": [
       "npm run format:fix",
       "npm run lint:fix",
-      "npm run test --watchAll=false --findRelatedTests",
+      "npm run test -- --watchAll=false --findRelatedTests",
       "git add"
     ]
   },

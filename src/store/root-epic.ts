@@ -1,8 +1,7 @@
 import { BehaviorSubject } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import { combineEpics, Epic } from 'redux-observable';
-import { RootEpic } from 'Types';
-import { rootEpic as rootEpicValues } from './slice';
+import { rootEpics as rootEpicValues } from './slice';
 
 // FIX: Strange typing problem (for now untyped)
 // ...Object.values(rootEpicValues)

@@ -5,12 +5,12 @@ import {
   combineReducers,
   Middleware,
 } from 'redux';
-import { createEpicMiddleware, Epic } from 'redux-observable';
+import { createEpicMiddleware } from 'redux-observable';
 import createThunkMiddleware from 'redux-thunk';
 import { injectEpic as injectStandardEpic, rootEpic } from './root-epic';
 import { hotReloadingEpic, injectEpic as injectHmrEpic } from './hmr-epic';
 import { composeEnhancers } from './utils';
-import { rootReducer, rootAction } from './slice';
+import { rootReducer } from './slice';
 import { dependencies } from '@/shared';
 
 const asyncReducers: { [key: string]: Reducer } = {};
@@ -30,8 +30,7 @@ function createReducer(toInject?: { [key: string]: Reducer }) {
 
 const store = createStore(createReducer(), {}, enhancer);
 
-// FIX: Strange typing problem (for now untyped)
-// Should fix itself if there's any epic in root module
+// FIX: Strange typing problem (for now untyped as typing root epic is problematic)
 const injectEpic =
   process.env.NODE_ENV === 'development' ? injectHmrEpic : injectStandardEpic;
 if (process.env.NODE_ENV === 'development') {
@@ -47,4 +46,4 @@ function injectReducer(key: string, asyncReducer: Reducer) {
 }
 
 export default store;
-export { injectReducer, injectEpic, rootAction };
+export { injectReducer, injectEpic };
