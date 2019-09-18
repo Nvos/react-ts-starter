@@ -1,7 +1,4 @@
-import * as webpack from 'webpack'
-
-
-const config:webpack.Configuration =  {
+const config = {
   resolve: {
     extensions: ['.ts', '.js'],
   },
@@ -16,11 +13,11 @@ const config:webpack.Configuration =  {
           options: {
             presets: ['@babel/preset-typescript'],
             babelrc: false,
-          }
+          },
         },
       },
     ],
   },
-}
+};
 
-module.exports = config
+module.exports = config;
