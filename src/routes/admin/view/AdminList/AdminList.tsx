@@ -1,6 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { AdminAction } from 'Types';
 import {
   socketConnect,
   socketDisconnect,
@@ -9,6 +8,14 @@ import {
 
 const AdminList: FC = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const ws = new WebSocket('ws://localhost:8080');
+    ws.onopen = socket => {
+      console.log('open', socket);
+      ws.send('okokok');
+    };
+  }, []);
 
   return (
     <>
