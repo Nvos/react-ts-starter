@@ -3,8 +3,9 @@ import { Switch, Route, Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
 import UserRouter from './user';
 import AdminRouter from './admin';
-import { NotFound } from '@/component';
+import { NotFound, InputFloat } from '@/component';
 import * as navigation from './root.routes';
+import { Form, Field } from 'react-final-form';
 
 type Props = {};
 
@@ -27,6 +28,28 @@ const Router: FC<Props> = () => {
           </li>
         </ul>
       </nav>
+      <Form
+        initialValues={{ field1: 15.2 }}
+        onSubmit={console.log}
+        render={({ handleSubmit }) => {
+          return (
+            <form onSubmit={handleSubmit}>
+              <Field name="field1">
+                {({ input }) => (
+                  <InputFloat
+                    resolution={0.003}
+                    max={30.0}
+                    min={15}
+                    name={input.name}
+                    value={input.value}
+                    onChange={input.onChange}
+                  />
+                )}
+              </Field>
+            </form>
+          );
+        }}
+      />
       <Switch>
         <Route path={navigation.USER_ROUTER} component={UserRouter} />
         <Route path={navigation.ADMIN_ROUTER} component={AdminRouter} />
