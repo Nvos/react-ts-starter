@@ -21,5 +21,8 @@
   ],
   "todo-tree.excludeGlobs": ["node_modules"],
   "files.autoSave": "onFocusChange",
-  "files.autoSaveDelay": 1000
+  "files.autoSaveDelay": 1000,
+  "todo-tree.filtering.excludeGlobs": [
+    "node_modules"
+  ]
 }

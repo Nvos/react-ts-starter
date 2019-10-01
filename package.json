@@ -42,7 +42,8 @@
     "rxjs": "^6.5.2",
     "styled-components": "~5.0.0-beta.8",
     "styled-system": "^5.1.0",
-    "typesafe-actions": "~5.0.0-3"
+    "typesafe-actions": "~5.0.0-3",
+    "use-debounce": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

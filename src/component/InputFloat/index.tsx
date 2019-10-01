@@ -5,15 +5,17 @@ import React, {
   FocusEventHandler,
   memo,
   useRef,
+  ChangeEvent,
 } from 'react';
 import { Input, Button, Container } from './styles';
+import { InnerDirectChange } from './useField';
 
 type Props = React.ComponentProps<typeof Input> & {
   value: number;
   max: number;
   min: number;
   resolution: number;
-  onChange: (value: number) => void;
+  onChange: InnerDirectChange<number>;
 };
 
 const deriveCurrentValue = (text: string, value: number) => {
@@ -70,7 +72,6 @@ const step = (
 
 const InputFloat: FC<Props> = memo(
   ({ value, resolution, min, max, onChange, onBlur, ...props }) => {
-    const inputRef = useRef<HTMLInputElement>();
     const [internalValue, setInternalValue] = useState<number>(value);
     const [internalText, setInternalText] = useState<string>(value.toString());
 
@@ -90,7 +91,6 @@ const InputFloat: FC<Props> = memo(
       );
 
       onChange(newValue);
-      inputRef.current!.focus();
     };
 
     const dec = () => {
@@ -104,7 +104,6 @@ const InputFloat: FC<Props> = memo(
       );
 
       onChange(newValue);
-      inputRef.current!.focus();
     };
 
     const internalOnChange: React.ChangeEventHandler<
@@ -140,7 +139,6 @@ const InputFloat: FC<Props> = memo(
           -
         </Button>
         <Input
-          ref={inputRef as any}
           onChange={internalOnChange}
           onBlur={internalOnBlur}
           value={internalText}
